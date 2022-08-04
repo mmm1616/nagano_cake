@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_04_071309) do
+ActiveRecord::Schema.define(version: 2022_08_04_101130) do
 
   create_table "admin_genres", force: :cascade do |t|
     t.string "name"
@@ -44,6 +44,15 @@ ActiveRecord::Schema.define(version: 2022_08_04_071309) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.text "introduction"
+    t.integer "price"
+    t.boolean "is_active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

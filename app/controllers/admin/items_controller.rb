@@ -3,9 +3,14 @@ class Admin::ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
+    @genres = Genre.all
   end
 
   def create
+    @item = Item.new(item_params)
+    @item.save
+    redirect_to admin_items_path
   end
 
   def show
@@ -16,4 +21,11 @@ class Admin::ItemsController < ApplicationController
 
   def update
   end
+  
+  private
+  
+  def genre_params
+    params.require(:item).permit(:image, :name, :introduction, :genre, :price, :is_active)
+  end
+  
 end
