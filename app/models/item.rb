@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
     
     has_one_attached :image
-    has_many :genres
+    belongs_to :genre
     
 end
