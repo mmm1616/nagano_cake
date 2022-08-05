@@ -59,4 +59,11 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  
+  protected
+  # strong parameterで姓と名の属性(firstNameとlastName)をpermitする
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name])
+  end
+  
 end

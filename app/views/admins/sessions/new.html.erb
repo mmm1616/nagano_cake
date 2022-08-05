@@ -6,17 +6,17 @@
 
 <%= form_with model: @admin, url: admin_session_path do |f| %>
   <div class="field row justify-content-center py-3">
-    <%= f.label :email, class: 'col-2' %><br />
+    <%= f.label :email, "メールアドレス", class: 'col-2' %><br />
     <%= f.email_field :email, class: 'col-2', autofocus: true, autocomplete: "email" %>
   </div>
   
   <div class="field row justify-content-center py-3">
-    <%= f.label :password, class: 'col-2' %><br />
+    <%= f.label :password, "パスワード", class: 'col-2' %><br />
     <%= f.password_field :password, class: 'col-2', autocomplete: "current-password" %>
   </div>
 
   <div class="actions row justify-content-center py-3">
-    <%= f.submit "Log in", class: 'btn btn-primary' %>
+    <%= f.submit "ログイン", class: 'btn btn-primary' %>
   </div>
   
 <% end %>
