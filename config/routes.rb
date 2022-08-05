@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end
   
   namespace :admin do
-    get 'homes/top'
+    get "/", to: "admin/homes#top"
   end
   
   namespace :public do
