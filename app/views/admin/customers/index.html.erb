@@ -1,14 +1,13 @@
 <div class="container">
-<div class="row">
-<div class="col-6 mt-5">
+<div class="col-2 mt-5 mb-5 bg-primary text-center">
 <h2>会員一覧</h2>
 </div>
 </div>
-</div>
+
 
    <div class="container">
         <table class="table col-10 mx-auto">
-            <thead>
+            <thead class="thead-light">
                 <tr>
                  <th>会員ID</th>
                  <th>氏名</th>
@@ -16,19 +15,26 @@
                  <th>ステータス</th>
                 </tr>
             </thead>
-        <% @customers.each do |customer| %>
+        
             <tbody>
+                <% @customers.each do |customer| %>
                 <tr>
                   <td><%= customer.id %></td>
                   <td><%= link_to "#{customer.full_name}", admin_customer_path(customer.id) %></td>
                   <td><%= customer.email %></td>
                   <% if customer.is_active %>
-                  <td>有効</td>
+                  <td><span class="text-success">有効</span></td>
                   <% else %>
-                  <td>退会</td>
+                  <td><span class="text-muted">退会</span></td>
                   <% end %>
                 </tr>
+                <% end %>
             </tbody>
-            <% end %>
         </table>
+        
     </div>
+    
+    <div class="container text-align-center">
+    <%= paginate @customers %>
+    </div>
+    

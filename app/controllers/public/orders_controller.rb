@@ -16,4 +16,6 @@ class Public::OrdersController < ApplicationController
 
   def show
   end
+  
+
 end

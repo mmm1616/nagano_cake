@@ -1,21 +1,20 @@
 <div class="container">
-<div class="col-10 mt-5 pb-4">
+<div class="col-5 mt-5 mb-5 bg-primary text-center">
 <h2><%= @customer.full_name %>さんの会員詳細</h2>
 </div>
 </div>
 
-
 <div class="container">
-<div class="col-7 mx-auto">
+<div class="col-md-7">
     
-<div class="field row pb-2">
+<div class="field row pb-3">
 <label for ="customer_id" class="col-3">会員ID</label>
 <div class="col-9">
 <%= @customer.id %>
 </div>
 </div>
 
-<div class="field row pb-2">
+<div class="field row pb-3">
 <label for ="customer_name" class="col-3">氏名</label>
 <div class="col-9">
 <%= @customer.last_name %> <%= @customer.first_name %>
@@ -29,37 +28,37 @@
 </div>
 </div>
 
-<div class="field row pb-2">
+<div class="field row pb-3">
 <label for ="customer_postal_code" class="col-3">郵便番号</label>
 <div class="col-9">
 <%= @customer.postal_code %>
 </div>
 </div>
 
-<div class="field row pb-2">
+<div class="field row pb-3">
 <label for ="customer_address" class="col-3">住所</label>
 <div class="col-9">
 <%= @customer.address %>
 </div>
 </div>
 
-<div class="field row pb-2">
+<div class="field row pb-3">
 <label for ="customer_telephone_number" class="col-3">電話番号</label>
 <div class="col-9">
 <%= @customer.telephone_number %>
 </div>
 </div>
 
-<div class="field row pb-2">
+<div class="field row pb-3">
 <label for ="customer_email" class="col-3">メールアドレス</label>
 <div class="col-9">
 <%= @customer.email %>
 </div>
 </div>
 
-<div class="field row pb-2">
+<div class="field row pb-3">
 <label for ="customer_status" class="col-3">会員ステータス</label>
-<div class="col-9">
+<div class="col-9 text-success">
 <% if @customer.is_active %>
 <p>有効</p>
 <% else %>

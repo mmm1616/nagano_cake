@@ -1,5 +1,5 @@
 <div class="container">
-<div class="col-10 mt-5">
+<div class="col-2 mt-5 mb-5 bg-primary text-center">
 <h2>商品詳細</h2>
 </div>
 </div>
@@ -7,40 +7,40 @@
 <div class="container">
 <div class="row mx-auto">
     
-<div class="col-3 text-right">
+<div class="col-4 text-right">
 <%= image_tag @item.image, size: "200x200" %>
 </div>
 
-<div class="col-9">
-<div class="form-group row">
+<div class="col-8">
+<div class="filed row mb-2">
 <label for ="item_name" class="col-3">商品名</label>
 <div class="col-9">
 <%= @item.name %>
 </div>
 </div>
 
-<div class="form-group row">
+<div class="field row mb-2">
 <label for ="item_introduction" class="col-3">商品説明</label>
 <div class="col-9">
 <%= @item.introduction %>
 </div>
 </div>
 
-<div class="form-group row">
+<div class="field row mb-2">
 <label for ="item_genre" class="col-3">ジャンル</label>
 <div class="col-9">
 <%= @item.genre.name %>
 </div>
 </div>
 
-<div class="form-group row">
+<div class="field row mb-2">
 <label for ="item_price" class="col-3">税込価格<br>(税抜価格)</label>
 <div class="col-9">
-<%= @item.price.to_s %>
+<%= @item.price.to_s(:delimited) %>
 </div>
 </div>
 
-<div class="form-group row">
+<div class="field row mb-2">
 <label for ="item_status" class="col-3">販売ステータス</label>
 <div class="col-9">
 <% if @item.is_active %>
