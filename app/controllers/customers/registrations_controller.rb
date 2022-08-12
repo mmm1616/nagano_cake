@@ -67,4 +67,4 @@ class Customers::RegistrationsController < Devise::RegistrationsController
                                        :postal_code, :address, :telephone_number])
     end
   
-  end
+end

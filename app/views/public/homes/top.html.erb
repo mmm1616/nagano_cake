@@ -1,2 +1,31 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container col-10">
+
+<div class="card bg-dark text-white">
+  <img src="/assets/images/top.jpeg" class="card-img" alt="background-img">
+  <div class="card-img-overlay">
+  <p class="card-text">ようこそ、ながのCAKEへ!</p>
+  <p class="card-text">このサイトは、ケーキ販売のECサイトになります。</p>
+  <p class="card-text">会員でない方も、商品の閲覧はできますが、</p>
+  <p class="card-text">購入には会員登録が必要になります。</p>
+  </div>
+</div>
+
+<div class="pt-5">
+<h3>新着商品</h3>
+</div>
+
+<div class="row pt-5">
+<% @items.first(4).each do |item| %>
+<div class="col-md-3 flex-column">
+
+<div><%= image_tag item.image, size: "200x200" %></div>
+
+<div><%= item.name %></div>
+
+<div><%= item.price %></div>
+</div>
+
+<% end %>
+</div>
+</div>
+
