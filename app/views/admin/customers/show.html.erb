@@ -58,11 +58,11 @@
 
 <div class="field row pb-3">
 <label for ="customer_status" class="col-3">会員ステータス</label>
-<div class="col-9 text-success">
+<div class="col-9">
 <% if @customer.is_active %>
-<p>有効</p>
+<p class="text-success">有効</p>
 <% else %>
-<p>退会</p>
+<p class="text-muted">退会</p>
 <% end %>
 </div>
 </div>

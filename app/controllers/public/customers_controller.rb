@@ -21,7 +21,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
-    @customer = Customer.find(params[:id])
+    @customer = current_customer.id
   end
 
   def withdraw

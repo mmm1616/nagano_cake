@@ -1,13 +1,18 @@
 <div class="container">
 
-<p><strong>本当に退会しますか？</strong></p>
+<div class="text-center">
+
+<div class="pt-5 pb-5">
+<h5><strong>本当に退会しますか？</strong></h5>
+</div>
+
 <p>退会すると、会員登録情報や</p>
 <p>これまでの購入履歴が閲覧できなくなります。</p>
 <p>退会する場合は、「退会する」をクリックしてください。</p>
 
-<%= link_to "退会しない", public_customer_path(@customer.id), class:"btn btn-success" %>
-<%= link_to "退会する", public_customer_path(@customer.id), method: :delete, class:"btn btn-danger", "data-confirm" => "本当に退会しますか？" %>
+<%= link_to "退会しない", public_customer_path(@customer), class:"btn btn-success" %>
+<%= link_to "退会する", public_customer_path(@customer), method: :delete, class:"btn btn-danger", "data-confirm" => "本当に退会しますか？" %>
 
     
-    
+</div>   
 </div>
