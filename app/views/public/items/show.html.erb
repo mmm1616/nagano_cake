@@ -5,17 +5,35 @@
 </div>
 
 <div class="container">
-<div class="col-9 row">
+<div class="col-12 row">
+
+<div class="col-2">
+<%= form_with url: public_items_path, method: :get do |f| %>
+<%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "-- ジャンル選択 --" %>
+<%= f.submit '選択' %>
+
+<% end %>
+</div>
     
 <div class="col-3 text-right">
 <%= image_tag @item.image, size: "200x200" %>
 </div>
 
-<div class="col-6">
+<div class="col-7">
 <h4><%= @item.name %></h4>
 <p><%= @item.introduction %></p>
-<div class="row">
+
+<div class="row pt-4 pl-3 d-flex align-items-center">
 <h3>¥ <%= @item.add_tax_price.to_s(:delimited) %></h3><small> (税込)</small>
+</div>
+
+<div class="pt-4">
+<%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
+<%= f.hidden_field :item_id, value: @item.id %>
+<%= f.select :amount, [1,2,3,4,5,6,7,8,9,10], include_blank: " 個数選択 ", class: 'form-select' %>
+<%= f.submit 'カートに入れる' ,class: 'btn btn-success btn-sm ml-5'%>
+<% end %>
+</div>
 </div>
 
 </div>
