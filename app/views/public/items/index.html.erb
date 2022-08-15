@@ -1,22 +1,46 @@
-<div class="container col-7">
+<div class="container">
+<div class="col-12 row">
 
+<div class="col-3 pt-5">
+<%= form_with url: public_items_path, method: :get do |f| %>
+<%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "-- ジャンル選択 --" %>
+<%= f.submit '選択' %>
 
+<% end %>
+</div>
+
+<div class="col-9">
 <div class="pt-5">
+<% if params[:genre_id] == nil %>
 <h3>商品一覧</h3>
+<% else %>
+<div class="row d-flex align-items-end">
+<h3><%= @genre.name %>一覧</h3><h5 class="pl-2">(全<%= @items.count %>件)</h5>
+</div>
+<% end %>
 </div>
 
 <div class="row pt-6">
 <% @items.first(8).each do |item| %>
 <div class="col-md-3 flex-column">
-
+<%= link_to public_item_path(item.id) do %>
 <div><%= image_tag item.image, size: "200x200" %></div>
+<% end %>
 
 <div><%= item.name %></div>
 
-<div><%= item.price %></div>
+<div>¥<%= item.price.to_s(:delimited) %></div>
 </div>
 
 <% end %>
 </div>
+</div>
+</div>
+</div>
 
+
+<div class="container col-2 mt-5">
+<div class="text-center">
+<%= paginate @items %>
+</div>
 </div>
