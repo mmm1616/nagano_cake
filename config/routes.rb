@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   
   namespace :public do
     resources :cart_items do
-      put 'destroy_all'
+      delete 'destroy_all'
       end
   end
   
