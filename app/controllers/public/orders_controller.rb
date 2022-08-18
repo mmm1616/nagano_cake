@@ -58,9 +58,13 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = Order.all
+    @cart_items = current_customer.cart_items
+    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
+    
   end
 
   def show
+    @order = Order.find(params[:id])
   end
   
   private
