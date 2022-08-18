@@ -33,11 +33,13 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
+      current_customer.cart_item.destroy_all
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = Order.new
     @order.save
+    render :complete
   end
 
   def index
