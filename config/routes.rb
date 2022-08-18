@@ -29,9 +29,9 @@ Rails.application.routes.draw do
   end
   
   namespace :public do
-      resources :orders
       post "orders/confirm", to: "orders#confirm"
       get "orders/complete", to: "orders#complete"
+      resources :orders
   end
   
   namespace :public do

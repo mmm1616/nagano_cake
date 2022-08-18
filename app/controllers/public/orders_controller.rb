@@ -33,16 +33,32 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
-      current_customer.cart_item.destroy_all
   end
 
   def create
-    @order = Order.new
-    @order.save
-    render :complete
+   
+    @cart_items = current_customer.cart_items.all
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    
+      @order.save
+      current_customer.cart_items.each do |cart_item|
+       order_item = OrderDetail.new
+       order_item.item_id = cart_item.id
+       order_item.order_id = @order.id
+       order_item.amount = cart_item.amount
+       order_item.price = cart_item.item.add_tax_price
+       order_item.save
+      end
+      redirect_to public_orders_complete_path
+      current_customer.cart_items.destroy_all
+    
   end
+  
 
   def index
+    @orders = Order.all
+    @cart_items = CartItem.all
   end
 
   def show
