@@ -43,12 +43,12 @@ class Public::OrdersController < ApplicationController
     
       @order.save
       current_customer.cart_items.each do |cart_item|
-       order_item = OrderDetail.new
-       order_item.item_id = cart_item.id
-       order_item.order_id = @order.id
-       order_item.amount = cart_item.amount
-       order_item.price = cart_item.item.add_tax_price
-       order_item.save
+       order_detail = OrderDetail.new
+       order_detail.item_id = cart_item.item.id
+       order_detail.order_id = @order.id
+       order_detail.amount = cart_item.amount
+       order_detail.price = cart_item.item.add_tax_price
+       order_detail.save
       end
       redirect_to public_orders_complete_path
       current_customer.cart_items.destroy_all
@@ -58,7 +58,6 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = Order.all
-    @cart_items = CartItem.all
   end
 
   def show
@@ -68,6 +67,10 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:customer_id, :postal_code, :address, :name, :shipping_cost, :total_payment, 
          :payment_method, :status, :address_id, :full_address)
+  end
+  
+  def order_detail_params
+    params.require(:order_detail).permit(:item_id, :order_id, :amount, :price, :making_status)
   end
 
 end
