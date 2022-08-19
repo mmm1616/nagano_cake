@@ -68,9 +68,9 @@ ActiveRecord::Schema.define(version: 2022_08_19_061725) do
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "item_id"
-    t.integer "customer_id"
-    t.integer "amount"
+    t.integer "item_id", null: false
+    t.integer "customer_id", null: false
+    t.integer "amount", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2022_08_19_061725) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -107,34 +107,34 @@ ActiveRecord::Schema.define(version: 2022_08_19_061725) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string "name"
-    t.text "introduction"
-    t.integer "price"
-    t.boolean "is_active"
+    t.string "name", null: false
+    t.text "introduction", null: false
+    t.integer "price", null: false
+    t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "genre_id"
   end
 
   create_table "order_details", force: :cascade do |t|
-    t.integer "item_id"
-    t.integer "order_id"
-    t.integer "amount"
-    t.integer "price"
-    t.integer "making_status"
+    t.integer "item_id", null: false
+    t.integer "order_id", null: false
+    t.integer "amount", null: false
+    t.integer "price", null: false
+    t.integer "making_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customer_id"
-    t.string "postal_code"
-    t.string "address"
-    t.string "name"
-    t.integer "shipping_cost", default: 800
-    t.integer "total_payment"
-    t.integer "payment_method", default: 0
-    t.integer "status", default: 0
+    t.integer "customer_id", null: false
+    t.string "postal_code", null: false
+    t.string "address", null: false
+    t.string "name", null: false
+    t.integer "shipping_cost", default: 800, null: false
+    t.integer "total_payment", null: false
+    t.integer "payment_method", default: 0, null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
