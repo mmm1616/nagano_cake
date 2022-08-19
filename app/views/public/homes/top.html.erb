@@ -1,14 +1,12 @@
 <div class="container col-10">
 
-<div class="card bg-dark text-white">
-  <img src="/assets/images/top.jpeg" class="card-img" alt="background-img">
-  <div class="card-img-overlay">
-  <p class="card-text">ようこそ、ながのCAKEへ!</p>
-  <p class="card-text">このサイトは、ケーキ販売のECサイトになります。</p>
-  <p class="card-text">会員でない方も、商品の閲覧はできますが、</p>
-  <p class="card-text">購入には会員登録が必要になります。</p>
+<div class="col-8 bg-image" style="background-image: url('/assets/images/cream.jpeg'); height:200px;">
+  <p>ようこそ、ながのCAKEへ!</p>
+  <p>このサイトは、ケーキ販売のECサイトになります。</p>
+  <p>会員でない方も、商品の閲覧はできますが、</p>
+  <p>購入には会員登録が必要になります。</p>
   </div>
-</div>
+
 
 <div class="pt-5">
 <h3>新着商品</h3>
@@ -22,7 +20,7 @@
 
 <div><%= item.name %></div>
 
-<div><%= item.price %></div>
+<div>¥<%= item.price.to_s(:delimited) %></div>
 </div>
 
 <% end %>

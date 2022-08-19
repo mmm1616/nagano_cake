@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Admins::SessionsController < Devise::SessionsController
+class Admin::SessionsController < Devise::SessionsController
 before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)

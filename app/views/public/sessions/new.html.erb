@@ -4,7 +4,8 @@
 </div>
 </div>
 
-<div class="container col-8">
+<div class="container">
+<div class="col-8">
 <div class="secondary col-4 text-center">
 <p>会員の方はこちらからログイン</p>
 </div>
@@ -13,24 +14,25 @@
 <%= form_with model: @customer, url: customer_session_path do |f| %>
    <div class="field row justify-content-center py-3">
     <%= f.label :email, "メールアドレス", class: 'col-2' %><br />
-    <%= f.email_field :email, class: 'col-2', autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, class: 'col-5', autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
   </div>
 
   <div class="field row justify-content-center py-3">
     <%= f.label :password, "パスワード", class: 'col-2' %><br />
-    <%= f.password_field :password, class: 'col-2', autocomplete: "current-password" %>
+    <%= f.password_field :password, class: 'col-5', autocomplete: "current-password" %>
   </div>
 
     <div class="actions row justify-content-center py-3">
     <%= f.submit "ログイン", class: 'btn btn-primary' %>
     </div>
-    <% end %>
+<% end %>
     
 <div class="container col-8">
 <div class="secondary col-4 text-center">
     <p>会員登録がお済みでない方</p>
 </div>
-  <div class="container text-center">
+<div class="container text-center">
     <p><%= link_to "こちら", new_customer_registration_path %>　　から新規登録を行なってください。</p>
-  </div>
+</div>
 
+</div>

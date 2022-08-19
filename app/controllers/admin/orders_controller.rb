@@ -1,18 +1,24 @@
 class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
-    @customer = Customer.find(params[:id])
-    @order_details = Order_detail.all
   end
 
   def update
-    @order = Item.find(params[:id])
+    @order = Order.find(params[:id])
+    order_detail.making_status = params[:order_detail][:making_status]
+
+    @order.update(order_params)
+    order_detail.update(order_detail_params)
+    redirect_to admin_order_path(@order.id)
     
-    if  @item.update(item_params)
-        redirect_to admin_item_path(@item.id)
-        flash[:notice] = "商品が更新されました。"
-    else
-        render :edit
-    end
+  end
+  
+  def order_params
+    params.require(:order).permit(:customer_id, :postal_code, :address, :name, :shipping_cost, :total_payment, 
+         :payment_method, :status, :address_id, :full_address)
+  end
+  
+  def order_detail_params
+    params.require(:order_detail).permit(:item_id, :order_id, :amount, :price, :making_status)
   end
 end
