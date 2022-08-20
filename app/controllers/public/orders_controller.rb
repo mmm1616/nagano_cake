@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :move_to_order, only: [:new, :confirm]
+
   def new
     @order = Order.new
     @customer = current_customer
@@ -75,6 +77,15 @@ class Public::OrdersController < ApplicationController
   
   def order_detail_params
     params.require(:order_detail).permit(:item_id, :order_id, :amount, :price, :making_status)
+  end
+  
+  def move_to_order
+    @cart_items = current_customer.cart_items
+    
+    unless @cart_items.exists?
+      flash[:notice]="カートに商品を入れてください。"
+      redirect_to public_cart_items_path
+    end
   end
 
 end

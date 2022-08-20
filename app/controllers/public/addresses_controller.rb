@@ -24,7 +24,7 @@ class Public::AddressesController < ApplicationController
     
     if  @address.update(address_params)
         redirect_to public_addresses_path
-        flash[:notice] = "会員情報が更新されました。"
+        flash[:notice] = "配送先が更新されました。"
     else
         render :edit
     end

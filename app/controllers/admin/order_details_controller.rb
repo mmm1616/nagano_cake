@@ -1,11 +1,10 @@
 class Admin::OrderDetailsController < ApplicationController
   def update
-    @order_detail = Order_detail.find(params[:id])
-    
-    if  @order_detail.update(order_detail_params)
-         redirect_to admin_order_path(@order.id)
-         flash[:notice] = "商品が更新されました。"
-    end
+      @order_detail = OrderDetail.find(params[:id])
+      @order = Order.find(params[:id])
+
+      @order_detail.update(making_status: params[:order_detail][:making_status])
+      redirect_to admin_order_path(@order.id)
   end
   
   private

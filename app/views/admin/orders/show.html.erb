@@ -38,7 +38,7 @@
 <div class="form-group row">
 <label for ="status" class="col-2"><h5><strong>注文ステータス</strong></h5></label>
 <div class="ml-2 pl-2">
-<%= f.select :status, options_for_select(Order.statuses_i18n.invert), class: "order-select" %>
+<%= f.select :status, Order.statuses_i18n.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]} %>
 </div>
 <div class="col-2">
 <%= f.submit '更新',class:"btn btn-success btn-sm" %>
@@ -46,6 +46,8 @@
 <% end %>
 </div>
 
+<div class="row">
+<div class="col-8">
 <table class="table">
     <thead class="thead-secondary">
         <tr>
@@ -57,18 +59,37 @@
         </tr>
     </thead>
     <tbody>
-        <% order.order_details.each do |order_detail| %>
+        <% @order.order_details.each do |order_detail| %>
         <tr>
             <td><%= order_detail.item.name %></td>
             <td><%= order_detail.price.to_s(:delimited) %></td>
             <td><%= order_detail.amount %></td>
             <td><%= order_detail.price.to_s(:delimited) %></td>
             <td><%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
-                <%= f.select :making_status, options_for_select(OrderDetail.making_statuses_i18n.invert), class: "order-select" %>
-                <%= f.submit '更新',class:"btn btn-success btn-sm" %>
+                <%= f.select :making_status, OrderDetail.making_statuses_i18n.keys.map{|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
+                <%= f.submit '更新',class:"btn btn-success btn-sm ml-2" %>
                 <% end %></td>
         </tr>
         <% end %>
     </tbody>
 </table>
+</div>
+
+<div class="col-4 d-flex align-items-end">
+<table class="table table-bordered">
+    <tr>
+        <td>商品合計</td>
+        <td><%= @order.total_payment.to_s(:delimited) %>円</td>
+    </tr>
+    <tr>
+        <td>送料</td>
+        <td><%= @order.shipping_cost %>円</td>
+    </tr>
+    <tr>
+        <td>請求金額合計</td>
+        <td><%= (@order.shipping_cost + @order.total_payment ).to_s(:delimited) %>円</td>
+    </tr>
+</table>
+</div>
+</div>
 

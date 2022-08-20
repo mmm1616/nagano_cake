@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/', to: "homes#top"
   end
-  
+
   namespace :public do
       resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
@@ -35,11 +35,8 @@ Rails.application.routes.draw do
   end
   
   namespace :public do
-      get '/cart_items', to: "cart_items#index"
-      patch '/cart_items/:id', to: "cart_items#update"
-      delete '/cart_items/:id', to: "cart_items#destroy"
-      delete '/cart_items/destroy_all', to: "cart_items#destroy_all"
-      post '/cart_items', to: "cart_items#create"
+     delete '/cart_items/destroy_all', to: "cart_items#destroy_all"
+     resources :cart_items, only: [:index, :update, :destroy, :create]
   end
   
   namespace :public do

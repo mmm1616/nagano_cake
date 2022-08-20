@@ -16,7 +16,9 @@
 <% @items.first(4).each do |item| %>
 <div class="col-md-3 flex-column">
 
+<%= link_to public_item_path(item.id) do %>
 <div><%= image_tag item.image, size: "200x200" %></div>
+<% end %>
 
 <div><%= item.name %></div>
 

@@ -1,4 +1,5 @@
 class Public::ItemsController < ApplicationController
+
   def index
     @genres = Genre.all
 
@@ -20,8 +21,12 @@ class Public::ItemsController < ApplicationController
   
   def create
     @cart_item = CartItem.new(cart_item_params)
-    @cart_item.save
-    @cart_item.amount += params[:amount].to_i
+    if @cart_item.save
+      @cart_item.amount += params[:amount].to_i
+    else
+      flash[:notice]="個数を選択してください。"
+      render 'show'
+    end
   end
   
   private
@@ -36,4 +41,6 @@ class Public::ItemsController < ApplicationController
     def cart_item_params
       params.require(:cart_item).permit(:amount, :customer_id)
     end
+    
+   
 end
