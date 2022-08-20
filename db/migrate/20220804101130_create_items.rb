@@ -8,5 +8,6 @@ class CreateItems < ActiveRecord::Migration[6.1]
       t.integer :genre_id, null: false
       t.timestamps
     end
+    add_foreign_key :items, :Genres, column: :genre_id
   end
 end

@@ -7,5 +7,6 @@ class CreateAddresses < ActiveRecord::Migration[6.1]
       t.string :address, null: false
       t.timestamps
     end
+      add_foreign_key :addresses, :Customers, column: :customer_id
   end
 end

@@ -141,4 +141,11 @@ ActiveRecord::Schema.define(version: 2022_08_15_100236) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "addresses", "Customers", column: "customer_id"
+  add_foreign_key "cart_items", "Customers", column: "customer_id"
+  add_foreign_key "cart_items", "Items", column: "item_id"
+  add_foreign_key "items", "Genres", column: "genre_id"
+  add_foreign_key "order_details", "Items", column: "item_id"
+  add_foreign_key "order_details", "Orders", column: "order_id"
+  add_foreign_key "orders", "Customers", column: "customer_id"
 end

@@ -6,5 +6,7 @@ class CreateCartItems < ActiveRecord::Migration[6.1]
       t.integer :amount, null: false
       t.timestamps
     end
+    add_foreign_key :cart_items, :Items, column: :item_id
+    add_foreign_key :cart_items, :Customers, column: :customer_id
   end
 end
