@@ -15,7 +15,7 @@ class Public::OrdersController < ApplicationController
        @order = Order.new
        @order.postal_code = current_customer.postal_code
        @order.address = current_customer.address
-       @order.name = current_customer.first_name + current_customer.last_name
+       @order.name = current_customer.last_name + current_customer.first_name
        @order.payment_method = params[:order][:payment_method]
     elsif params[:order][:full_address] == "1"
        @order = Order.new
@@ -52,7 +52,7 @@ class Public::OrdersController < ApplicationController
        order_detail.price = cart_item.item.add_tax_price
        order_detail.save
       end
-      redirect_to public_orders_complete_path
+      redirect_to orders_complete_path
       current_customer.cart_items.destroy_all
     
   end
