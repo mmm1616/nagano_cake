@@ -84,7 +84,7 @@ class Public::OrdersController < ApplicationController
     
     unless @cart_items.exists?
       flash[:notice]="カートに商品を入れてください。"
-      redirect_to public_cart_items_path
+      redirect_to cart_items_path
     end
   end
 

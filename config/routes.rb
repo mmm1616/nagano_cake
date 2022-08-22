@@ -21,25 +21,25 @@ Rails.application.routes.draw do
   end
   
   namespace :admin do
-    get '/', to: "homes#top"
+  root  "homes#top"
   end
 
-  namespace :public do
+  scope module: 'public' do
       resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
   
-  namespace :public do
+  scope module: 'public' do
       post "orders/confirm", to: "orders#confirm"
       get "orders/complete", to: "orders#complete"
       resources :orders
   end
   
-  namespace :public do
-     delete '/cart_items/destroy_all', to: "cart_items#destroy_all"
-     resources :cart_items, only: [:index, :update, :destroy, :create]
+  scope module: 'public' do
+    delete '/cart_items/destroy_all', to: "cart_items#destroy_all"
+    resources :cart_items, only: [:index, :update, :destroy, :create]
   end
   
-  namespace :public do
+  scope module: 'public' do
       get '/customers/mypage', to: "customers#show"
       get '/customers/information/edit', to: "customers#edit"
       patch '/customers/information', to: "customers#update"
@@ -47,15 +47,16 @@ Rails.application.routes.draw do
       patch '/customers/withdraw', to: "customers#withdraw"
   end
   
-  namespace :public do
+  scope module: 'public' do
       resources :items, only: [:index, :show]
   end
   
-  namespace :public do
-      root to: "homes#top"
-      get '/about', to: "homes#about"
+
+  scope module: 'public' do
+  root to: "homes#top"
+  get '/about', to: "homes#about"
   end
-  
+
   devise_for :customers, path: 'customers', controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'

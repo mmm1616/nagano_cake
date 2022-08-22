@@ -12,7 +12,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     
     if  @customer.update(customer_params)
-        redirect_to public_customers_mypage_path
+        redirect_to customers_mypage_path
         flash[:notice] = "会員情報が更新されました。"
     else
         render :edit
@@ -26,9 +26,9 @@ class Public::CustomersController < ApplicationController
 
   def withdraw
     @customer = current_customer
-    @customer.update(is_deleted: false)
+    @customer.update(is_deleted: true)
     reset_session
-    redirect_to public_root_path
+    redirect_to root_path
     flash[:notice]="ご利用いただき、ありがとうございました。"
   end
   

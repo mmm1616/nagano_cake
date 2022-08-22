@@ -1,9 +1,6 @@
 class Admin::CustomersController < ApplicationController
 
-  def new
-   @customer = Customer.new
-  end
-  
+
   def index
     @customers = Customer.page(params[:page]).per(10)
   end
@@ -14,12 +11,6 @@ class Admin::CustomersController < ApplicationController
 
   def edit
     @customer = Customer.find(params[:id])
-  end
-  
-  def create
-    @customer = Customer.new(customer_params)
-    @customer.save
-    redirect_to public_customers_path(@customer.id)
   end
 
   def update
