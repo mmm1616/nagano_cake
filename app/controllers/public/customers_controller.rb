@@ -21,23 +21,22 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
-    @customer = current_customer.id
+    @customer = current_customer
   end
 
   def withdraw
-  end
-  
-  def destroy
-    @customer = Customer.find(params[:id]) 
-    @customer.destroy
-    redirect_to public_homes_top_path
+    @customer = current_customer
+    @customer.update(is_deleted: false)
+    reset_session
+    redirect_to public_root_path
+    flash[:notice]="ご利用いただき、ありがとうございました。"
   end
   
   private
   
    def customer_params
     params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, 
-                               :postal_code, :address, :telephone_number, :email)
+                               :postal_code, :address, :telephone_number, :email, :is_deleted)
    end
   
  

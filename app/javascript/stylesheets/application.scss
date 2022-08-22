@@ -9,6 +9,23 @@ header, body{
   background-color: #f2f4f5 !important;
 }
 
+.field_with_errors {
+  display: contents;
+}
 
+.main-container {
+  height: 200px;
+  width: 800px;
+  background-image: url(../../assets/images/bg-cake.jpg);
+  background-size: cover;
+  background-position: center;
+}
 
+.bg-rgba {
+  height: 200px;
+  width: 100%;
+  padding-top:30px;
+  text-align: center;
+  background-color: rgba( 255, 255, 255, 0.8);
+}
 
