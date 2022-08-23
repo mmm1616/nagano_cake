@@ -23,9 +23,9 @@
                   <td><%= link_to "#{customer.full_name}", admin_customer_path(customer.id) %></td>
                   <td><%= customer.email %></td>
                   <% if customer.is_deleted %>
-                  <td><span class="text-success">有効</span></td>
+                　<td><span class="text-muted">退会</span></td>
                   <% else %>
-                  <td><span class="text-muted">退会</span></td>
+                　<td><span class="text-success">有効</span></td>
                   <% end %>
                 </tr>
                 <% end %>

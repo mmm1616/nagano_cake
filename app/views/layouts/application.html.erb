@@ -17,6 +17,9 @@
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <a class="navbar-brand p-3" href="/">LOGO</a>
+          <% if customer_signed_in? %>
+          <div class="col-7 text-center ml-5">ようこそ、<%= current_customer.last_name %>さん　!</div>
+          <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

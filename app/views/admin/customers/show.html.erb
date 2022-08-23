@@ -60,9 +60,9 @@
 <label for ="customer_status" class="col-3">会員ステータス</label>
 <div class="col-9">
 <% if @customer.is_deleted %>
-<p class="text-success">有効</p>
-<% else %>
 <p class="text-muted">退会</p>
+<% else %>
+<p class="text-success">有効</p>
 <% end %>
 </div>
 </div>

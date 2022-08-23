@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
   before_action :move_to_order, only: [:new, :confirm]
 
   def new
