@@ -6,7 +6,7 @@ class Public::ItemsController < ApplicationController
     @genres = Genre.all
 
     if params[:genre_id] == nil
-    @items = Item.page(params[:page]).per(10)
+    @items = Item.where(is_active: true).page(params[:page]).per(10)
     else
     items = Item.where(genre_id: params[:genre_id])
     @items = items.page(params[:page]).per(10)
@@ -33,7 +33,7 @@ class Public::ItemsController < ApplicationController
   
   private
     def item_params
-    params.require(:item).permit(:image)
+    params.require(:item).permit(:image, :is_active)
     end
     
     def genre_params

@@ -29,3 +29,24 @@ header, body{
   background-color: rgba( 255, 255, 255, 0.8);
 }
 
+.text {
+  color: black;
+  text-decoration: underline;
+}
+
+.text:hover {
+  background-color: #AFD2E4;
+  color: black;
+}
+
+.table-bordered > thead > tr > th, .table-bordered > .thead-light > tr > th{
+    border:1px solid black;
+}
+
+.table-bordered > tbody > tr > td{
+    border:1px solid black;
+}
+
+.table .border-left {
+  border-left: none;
+}

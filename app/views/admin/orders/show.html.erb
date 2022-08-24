@@ -75,19 +75,19 @@
 </table>
 </div>
 
-<div class="col-4 d-flex align-items-end">
-<table class="table table-bordered">
+<div class="col-3 d-flex align-items-end">
+<table class="table table-borderless">
     <tr>
-        <td>商品合計</td>
+        <td><strong>商品合計</strong></td>
         <td><%= @order.total_payment.to_s(:delimited) %>円</td>
     </tr>
     <tr>
-        <td>送料</td>
+        <td><strong>送料</strong></td>
         <td><%= @order.shipping_cost %>円</td>
     </tr>
     <tr>
-        <td>請求金額合計</td>
-        <td><%= (@order.shipping_cost + @order.total_payment ).to_s(:delimited) %>円</td>
+        <td><strong>請求金額合計</strong></td>
+        <td><strong><%= (@order.shipping_cost + @order.total_payment ).to_s(:delimited) %>円</strong></td>
     </tr>
 </table>
 </div>
